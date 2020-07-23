@@ -19,6 +19,29 @@ public class RemoveLinkedListElements {
         return (head.val == val) ? head.next : head;
     }
 
+    public ListNode removeElementsRec2(ListNode head, int val) {
+        if (head == null) return head;
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
+        if (head == null) return head;
+
+        ListNode prev = head;
+        ListNode curr = head.next;
+
+        while (curr != null) {
+            if (curr.val == val) {
+                prev.next = curr.next;
+                curr = curr.next;
+            } else {
+                prev = curr;
+                curr = curr.next;
+            }
+        }
+
+        return head;
+    }
+
     public static void main(String[] args) {
         RemoveLinkedListElements removeLinkedListElements = new RemoveLinkedListElements();
 
