@@ -60,9 +60,9 @@ public class FizzBuzzMulti {
         Thread thread3 = new Thread(runnableBuzz);
 
         thread1.start();
-        thread1.join();
         thread2.start();
         thread3.start();
+        thread3.join();
 
         return list;
     }
@@ -70,7 +70,7 @@ public class FizzBuzzMulti {
     public static void main(String[] args) throws InterruptedException {
         FizzBuzzMulti fizzBuzzMulti = new FizzBuzzMulti();
 
-        List<String> list = Stream.iterate(0, i -> i + 1).limit(1001).map(String::valueOf).collect(Collectors.toList());
+        List<String> list = Stream.iterate(0, i -> i + 1).limit(101).map(String::valueOf).collect(Collectors.toList());
 
         //list.forEach(System.out::println);
         fizzBuzzMulti.fizzBuzzMulti(list).forEach(System.out::println);

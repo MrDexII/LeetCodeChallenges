@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,13 +15,13 @@ public class FizzBuzzMultiTest {
     @Before
     public void init() {
         fizzBuzzMulti = new FizzBuzzMulti();
-        list = Stream.iterate(0, i -> i + 1).limit(1000001).map(String::valueOf).collect(Collectors.toList());
+        list = Stream.iterate(0, i -> i + 1).limit(101).map(String::valueOf).collect(Collectors.toList());
     }
 
     @Test
     public void fizzBuzzMulti() throws InterruptedException {
-        List<String> temp = fizzBuzzMulti.fizzBuzzIterable(list);
-        List<String> temp2 = fizzBuzzMulti.fizzBuzzMulti(list);
+        List<String> temp = fizzBuzzMulti.fizzBuzzIterable(new ArrayList<>(list));
+        List<String> temp2 = fizzBuzzMulti.fizzBuzzMulti(new ArrayList<>(list));
         assertEquals(temp, temp2);
     }
 

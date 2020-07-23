@@ -1,6 +1,6 @@
 package LinkedList;
 
-class ListNode implements Cloneable {
+class ListNode {
     int val;
     ListNode next;
 
@@ -14,11 +14,6 @@ class ListNode implements Cloneable {
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 }
 
