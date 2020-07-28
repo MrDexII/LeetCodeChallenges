@@ -2,31 +2,16 @@ package LinkedList;
 
 public class OddEvenLinkedList {
     public ListNode oddEvenList(ListNode head) {
-        ListNode dummy = new ListNode(-1, head);
-        ListNode current = head;
-        ListNode odd = dummy;
-        ListNode even;
-
-        while (current.val % 2 != 0) {
-            odd = current;
-            current = current.next;
+        if (head == null) return null;
+        ListNode odd = head, even = head.next, evenHead = even;
+        while (even != null && even.next != null) {
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
         }
-        if (current.next == null) return dummy.next;
-        even = current;
-
-        while (current != null) {
-            if (current.val % 2 == 0) {
-                odd.next = even;
-                current.next = even.next;
-                even.next = current;
-                odd = even;
-                current = current.next;
-            } else {
-                current = current.next;
-            }
-        }
-
-        return dummy.next;
+        odd.next = evenHead;
+        return head;
     }
 
     public static void main(String[] args) {
