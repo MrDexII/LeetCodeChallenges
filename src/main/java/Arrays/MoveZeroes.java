@@ -19,16 +19,16 @@ public class MoveZeroes {
             }
         }
     }
+
     //Space complexity O(1)
     //Time complexity  O(n)
     public void moveZeroes2(int[] nums) {
-        int start  = -1;
-        int end = 0;
-        for(end = 0; end<nums.length; end++){
-            if(nums[end]!=0 && start!=-1){
+        int start = -1;
+        for (int end = 0; end < nums.length; end++) {
+            if (nums[end] != 0 && start != -1) {
                 swapVoid(nums, start, end);
                 start++;
-            }else if(nums[end]==0 && start==-1){
+            } else if (nums[end] == 0 && start == -1) {
                 start = end;
             }
         }
@@ -50,7 +50,7 @@ public class MoveZeroes {
     public static void main(String[] args) {
         MoveZeroes moveZeroes = new MoveZeroes();
 
-        int[] nums = {0,1,0,3,12};
+        int[] nums = {0, 1, 0, 3, 12};
 
         moveZeroes.moveZeroes2(nums);
 
