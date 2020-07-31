@@ -10,8 +10,8 @@ public class Factorial {
         long result = 1;
         if (i == 0 || i == 1)
             return 1;
-        for (int j = 1; j < i; j++)
-            result *= j + 1;
+        for (int j = 1; j <= i; ++j)
+            result *= j;
         return result;
     }
 
