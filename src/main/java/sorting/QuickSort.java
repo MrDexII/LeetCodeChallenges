@@ -2,8 +2,8 @@ package sorting;
 
 public class QuickSort {
 
-    private int[] numbers;
-    private int length;
+    private final int[] numbers;
+    private final int length;
 
     public int[] getNumbers() {
         return numbers;
@@ -15,19 +15,17 @@ public class QuickSort {
     }
 
     public void sort() {
-        if (numbers == null || numbers.length == 0 || numbers.length == 1)
+        if (numbers.length == 0 || numbers.length == 1)
             return;
 
         quickSort(0, length - 1);
     }
 
     private void quickSort(int low, int high) {
-
         int i = low;
         int j = high;
 
         int pivot = numbers[low + (high - low) / 2];
-
 
         while (i <= j) {
             while (numbers[i] < pivot)
@@ -52,5 +50,13 @@ public class QuickSort {
         int temp = numbers[i];
         numbers[i] = numbers[j];
         numbers[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {1, 5, 9, 0, 2, 6, 8, 3, 7, 4};
+
+        QuickSort quickSort = new QuickSort(numbers);
+        quickSort.sort();
+
     }
 }

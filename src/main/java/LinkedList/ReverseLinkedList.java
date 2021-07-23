@@ -47,6 +47,6 @@ public class ReverseLinkedList {
                 4, new ListNode(
                 5)))));
 
-        ListNode node = reverseList(head);
+        ListNode node = reverseList2(head);
     }
 }

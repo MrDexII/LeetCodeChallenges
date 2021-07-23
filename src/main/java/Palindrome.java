@@ -1,43 +1,32 @@
 public class Palindrome {
     public static void main(String[] args) {
-        int a = 1233121;
-        System.out.println(numberPalindrome(a));
+        int a = 12133121;
+        String string = "abcscba";
+        System.out.println(palindrome(string));
     }
 
     private static boolean palindrome(String value) {
         StringBuilder temp = new StringBuilder(value);
-        if (temp.reverse().toString().equals(value))
-            return true;
-        else
-            return false;
+        return temp.reverse().toString().equals(value);
     }
 
     private static boolean palindromeNoSB(String value) {
         char[] reversedTab = new char[value.length()];
         int iterator = 0;
         for (int i = value.length() - 1; i >= 0; i--) {
-            reversedTab[iterator] = value.charAt(i);
-            iterator++;
+            reversedTab[iterator++] = value.charAt(i);
         }
-        if (value.equals(new String(reversedTab)))
-            return true;
-        else
-            return false;
+        return value.equals(new String(reversedTab));
     }
 
-    private static boolean numberPalindrome(int value) {
-        String reversedValue = "";
+    private static boolean palindrome(int value) {
+        StringBuilder reversedValue = new StringBuilder();
         int memorisedValue = value;
-        while (true) {
+        while (memorisedValue != 0) {
             int i = memorisedValue % 10;
             memorisedValue /= 10;
-            reversedValue += String.valueOf(i);
-            if (memorisedValue == 0)
-                break;
+            reversedValue.append(i);
         }
-        if (value == Integer.valueOf(reversedValue))
-            return true;
-        else
-            return false;
+        return value == Integer.parseInt(reversedValue.toString());
     }
 }
