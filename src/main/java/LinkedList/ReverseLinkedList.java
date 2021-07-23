@@ -1,5 +1,8 @@
 package LinkedList;
 
+import java.util.LinkedList;
+import java.util.List;
+
 class ListNode {
     int val;
     ListNode next;
@@ -31,9 +34,9 @@ public class ReverseLinkedList {
         return prev;
     }
 
-    public static ListNode reverseList2(ListNode head) {
+    public static ListNode reverseListRecursive(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode p = reverseList2(head.next);
+        ListNode p = reverseListRecursive(head.next);
         head.next.next = head;
         head.next = null;
         return p;
@@ -47,6 +50,20 @@ public class ReverseLinkedList {
                 4, new ListNode(
                 5)))));
 
-        ListNode node = reverseList2(head);
+        ListNode node = reverseListRecursive(head);
+
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        List<Integer> listReversed = new LinkedList<>();
+
+        list.descendingIterator().forEachRemaining(listReversed::add);
+        System.out.println("list = " + list);
+        System.out.println("listReversed = " + listReversed);
     }
 }
