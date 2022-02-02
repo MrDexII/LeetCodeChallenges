@@ -48,18 +48,13 @@ public class CoinChange2 {
         return dp[amount];
     }
 
-
     public static void main(String[] args) {
-        
         CoinChange2 coinChange2 = new CoinChange2();
 
         int amount = 10;
         int[] coins = {1, 2, 5};
 
         System.out.println(coinChange2.change2(amount, coins));
-
-        new Thread();
-
 
     }
 }

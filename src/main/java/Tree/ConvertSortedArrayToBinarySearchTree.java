@@ -22,7 +22,11 @@ public class ConvertSortedArrayToBinarySearchTree {
         ConvertSortedArrayToBinarySearchTree convertSortedArrayToBinarySearchTree = new ConvertSortedArrayToBinarySearchTree();
 
         int[] nums = {-10, -3, 0, 5, 9};
-
+//                  0
+//                /   \
+//             -10     5
+//                \     \
+//                -3     9
         TreeNode treeNode = convertSortedArrayToBinarySearchTree.sortedArrayToBST(nums);
     }
 }

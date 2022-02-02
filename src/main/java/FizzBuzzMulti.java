@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class FizzBuzzMulti {
@@ -73,7 +74,7 @@ public class FizzBuzzMulti {
         List<String> list = Stream.iterate(0, i -> i + 1).limit(101).map(String::valueOf).collect(Collectors.toList());
 
         //list.forEach(System.out::println);
-        fizzBuzzMulti.fizzBuzzMulti(list).forEach(System.out::println);
+        fizzBuzzMulti.fizzBuzzIterable(list).forEach(System.out::println);
 
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class RandomPickWithWeight {
     //    private int[] w;
 //    private Random random;
@@ -20,8 +22,8 @@ public class RandomPickWithWeight {
 //        }
 //        return 0;
 //    }
-    int[] prefixSum;
-    int totalSum;
+    private int[] prefixSum;
+    private int totalSum;
 
     public RandomPickWithWeight(int[] w) {
         prefixSum = new int[w.length];
@@ -50,11 +52,13 @@ public class RandomPickWithWeight {
     }
 
     public static void main(String[] args) {
-        int[] w = {1, 2, 3};
+        //weights for indexes 0,1,2
+        int[] weights = {3, 2, 1};
         int[] results = new int[10];
-        RandomPickWithWeight randomPickWithWeight = new RandomPickWithWeight(w);
+        RandomPickWithWeight randomPickWithWeight = new RandomPickWithWeight(weights);
         for (int i = 0; i < results.length; i++) {
             results[i] = randomPickWithWeight.pickIndex();
         }
+        System.out.println("results = " + Arrays.toString(results));
     }
 }

@@ -29,6 +29,11 @@ public class BinaryTreeLevelOrderTraversal {
     public static void main(String[] args) {
         BinaryTreeLevelOrderTraversal binaryTreeLevelOrderTraversal = new BinaryTreeLevelOrderTraversal();
 
+//                    3
+//                 /    \
+//                9     20
+//                     /  \
+//                   15    7
         TreeNode root = new TreeNode(
                 3, new TreeNode(
                 9, null, null), new TreeNode(

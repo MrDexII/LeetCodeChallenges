@@ -37,30 +37,30 @@ public class InvertBinaryTree {
         InvertBinaryTree invertBinaryTree = new InvertBinaryTree();
 
 
-//                          4
-//                       /    \
-//                     2       7
-//                   /  \    /  \
-//                  1    3  6    9
-        TreeNode root = new TreeNode(
-                4, new TreeNode(
-                2, new TreeNode(
-                1), new TreeNode(
-                3)), new TreeNode(
-                7, new TreeNode(
-                6), new TreeNode(
-                9)));
-
-//        //                  1
-//        //                   \
-//        //                    2
-//        //                  /
-//        //                 3
+////                          4                   4
+////                       /    \              /    \
+////                     2       7           7       2
+////                   /  \    /  \        /  \    /  \
+////                  1    3  6    9     9     6  3    1
 //        TreeNode root = new TreeNode(
-//                1, null, new TreeNode(
-//                2, new TreeNode(3), null));
+//                4, new TreeNode(
+//                2, new TreeNode(
+//                1), new TreeNode(
+//                3)), new TreeNode(
+//                7, new TreeNode(
+//                6), new TreeNode(
+//                9)));
+
+        //                  1             1
+        //                   \          /
+        //                    2        2
+        //                  /           \
+        //                 3             3
+        TreeNode root = new TreeNode(
+                1, null, new TreeNode(
+                2, new TreeNode(3), null));
 
 
-        TreeNode node = invertBinaryTree.invertTree(root);
+        invertBinaryTree.invertTree(root);
     }
 }

@@ -2,8 +2,10 @@ package Arrays;
 
 import java.util.*;
 
+//https://leetcode.com/problems/two-sum/
 public class TwoSum {
-
+    // space complexity O(1)
+    // time complexity O(n^2)
     public static int[] twoSum1(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums.length; j++) {
@@ -16,6 +18,8 @@ public class TwoSum {
         return new int[]{};
     }
 
+    // space complexity O(n)
+    // time complexity O(n)
     public static int[] twoSum2(int[] nums, int target) {
         List<Integer> numbers = new ArrayList<>();
         for (int number : nums)
@@ -29,6 +33,8 @@ public class TwoSum {
         return new int[]{};
     }
 
+    // space complexity O(n)
+    // time complexity O(1)
     public static int[] twoSum3(int[] nums, int target) {
         Map<Integer, Integer> numbersMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -41,10 +47,20 @@ public class TwoSum {
     }
 
     public static void main(String[] args) {
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
+        //example 1
+        int[] nums1 = {2, 7, 11, 15};
+        int target1 = 9;
 
-        System.out.println(Arrays.toString(twoSum3(nums, target)));
+        //example 2
+        int[] nums2 = {3, 2, 4};
+        int target2 = 6;
 
+        //example 3
+        int[] nums3 = {3, 3};
+        int target3 = 6;
+
+        System.out.println(Arrays.toString(twoSum3(nums1, target1)));
+        System.out.println(Arrays.toString(twoSum3(nums2, target2)));
+        System.out.println(Arrays.toString(twoSum3(nums3, target3)));
     }
 }

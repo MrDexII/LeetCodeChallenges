@@ -2,7 +2,7 @@ public class Palindrome {
     public static void main(String[] args) {
         int a = 12133121;
         String string = "abcscba";
-        System.out.println(palindrome(string));
+        System.out.println(palindromeNoSB2(string));
     }
 
     private static boolean palindrome(String value) {
@@ -17,6 +17,21 @@ public class Palindrome {
             reversedTab[iterator++] = value.charAt(i);
         }
         return value.equals(new String(reversedTab));
+    }
+
+    private static boolean palindromeNoSB2(String value) {
+        char[] reversString = new char[value.length()];
+
+        int start = 0;
+        int end = value.length() - 1;
+
+        while (start <= end) {
+            reversString[end] = value.charAt(start);
+            reversString[start] = value.charAt(end);
+            start++;
+            end--;
+        }
+        return value.equals(new String(reversString));
     }
 
     private static boolean palindrome(int value) {
