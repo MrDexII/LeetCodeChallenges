@@ -17,6 +17,8 @@ public class ContainerWithMostWater {
         return maxA;
     }
 
+    //time complexity O(n)
+    //spase complexity O(1)
     public static int maxArea2(int[] height) {
         int maxArea = 0;
         int pointerL = 0;
