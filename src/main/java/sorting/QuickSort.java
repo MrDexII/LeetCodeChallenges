@@ -1,62 +1,71 @@
 package sorting;
 
+//O(n log(n)) - time complexity
+// O(log(n)) - space complexity
 public class QuickSort {
 
-    private final int[] numbers;
-    private final int length;
+    public static void main(String[] args) {
+        int[] array = {4, 3, 6, 1, 2, 56, 34, 12, 1, 2, 0, 8};
 
-    public int[] getNumbers() {
-        return numbers;
+        quickSort2(array, 0, array.length - 1);
+        for (int number : array) {
+            System.out.print(number + " ");
+        }
     }
 
-    public QuickSort(int[] numbers) {
-        this.numbers = numbers;
-        this.length = numbers.length;
-    }
-
-    public void sort() {
-        if (numbers.length == 0 || numbers.length == 1)
-            return;
-
-        quickSort(0, length - 1);
-    }
-
-    private void quickSort(int low, int high) {
+    private static void quickSort(int[] array, int low, int high) {
         int i = low;
         int j = high;
 
-        int pivot = numbers[low + (high - low) / 2];
+        int pivot = array[low + (high - low) / 2];
 
         while (i <= j) {
-            while (numbers[i] < pivot)
+            while (array[i] < pivot) {
                 i++;
-            while (numbers[j] > pivot)
+            }
+            while (array[j] > pivot) {
                 j--;
+            }
             if (i <= j) {
-                swap(i, j);
+                swap(array, i, j);
                 i++;
                 j--;
             }
         }
-
         if (low < j)
-            quickSort(low, j);
-
+            quickSort(array, low, j);
         if (i < high)
-            quickSort(i, high);
+            quickSort(array, i, high);
     }
 
-    private void swap(int i, int j) {
-        int temp = numbers[i];
-        numbers[i] = numbers[j];
-        numbers[j] = temp;
+    private static void quickSort2(int[] array, int low, int high) {
+        if (low < high) {
+            int partitionIndex = partition(array, low, high);
+
+            quickSort2(array, low, partitionIndex - 1);
+            quickSort2(array, partitionIndex + 1, high);
+        }
     }
 
-    public static void main(String[] args) {
-        int[] numbers = {1, 5, 9, 0, 2, 6, 8, 3, 7, 4};
+    private static int partition(int[] array, int low, int high) {
+        int pivot = array[high];
+        int i = low - 1;
 
-        QuickSort quickSort = new QuickSort(numbers);
-        quickSort.sort();
+        for (int j = low; j < high; j++) {
+            if (array[j] <= pivot) {
+                i++;
+                swap(array, i, j);
+            }
+        }
 
+        swap(array, i + 1, high);
+
+        return i + 1;
+    }
+
+    private static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }
