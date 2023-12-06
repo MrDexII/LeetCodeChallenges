@@ -1,16 +1,8 @@
 package adventOfCode2023;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CubeConundrum {
-    private static Map<String, Integer> possibleCubes = new HashMap<>();
-
+    //https://adventofcode.com/2023/day/2
     public static void main(String[] args) {
-        possibleCubes.put("red", 12);
-        possibleCubes.put("green", 13);
-        possibleCubes.put("blue", 14);
-
         String gamesResults = """
                 Game 1: 5 red, 1 green; 6 red, 3 blue; 9 red; 1 blue, 1 green, 4 red; 1 green, 2 blue; 2 blue, 1 red
                 Game 2: 12 red, 2 green, 9 blue; 8 red, 12 blue; 9 red, 1 blue, 2 green; 12 blue, 8 red, 2 green; 4 red, 5 blue; 1 green, 9 blue, 10 red
@@ -113,7 +105,6 @@ public class CubeConundrum {
                 Game 99: 4 blue; 1 red, 2 green, 11 blue; 12 blue, 1 green, 1 red; 11 blue, 6 green; 1 red, 7 green, 8 blue
                 Game 100: 10 blue, 5 green; 4 green, 3 red, 6 blue; 2 green, 4 red, 1 blue
                 """;
-
         System.out.println(sumPossibleGamesIds(gamesResults));
     }
 
@@ -122,13 +113,12 @@ public class CubeConundrum {
     }
 
     private static int choseGame(String gameInfo) {
-        int maxRed = 0;
-        int maxGreen = 0;
-        int maxBlue = 0;
+        int minRed = 0;
+        int minGreen = 0;
+        int minBlue = 0;
 
         String[] splitToGameIdAndRest = gameInfo.split(":");
         String[] listOfSubsetsOfCubes = splitToGameIdAndRest[1].split(";");
-        int gameId = Integer.valueOf(splitToGameIdAndRest[0].substring(5));
 
         for (int i = 0; i < listOfSubsetsOfCubes.length; i++) {
             String[] singleSubset = listOfSubsetsOfCubes[i].split(",");
@@ -137,21 +127,18 @@ public class CubeConundrum {
                 String[] splitToNumberAndColour = singleCube.split(" ");
                 switch (splitToNumberAndColour[1]) {
                     case "red" -> {
-                        maxRed = Math.max(maxRed, Integer.valueOf(splitToNumberAndColour[0]));
-                        if (maxRed > possibleCubes.get("red")) return 0;
+                        minRed = Math.max(minRed, Integer.parseInt(splitToNumberAndColour[0]));
                     }
                     case "green" -> {
-                        maxGreen = Math.max(maxGreen, Integer.valueOf(splitToNumberAndColour[0]));
-                        if (maxGreen > possibleCubes.get("green")) return 0;
+                        minGreen = Math.max(minGreen, Integer.parseInt(splitToNumberAndColour[0]));
                     }
                     case "blue" -> {
-                        maxBlue = Math.max(maxBlue, Integer.valueOf(splitToNumberAndColour[0]));
-                        if (maxBlue > possibleCubes.get("blue")) return 0;
+                        minBlue = Math.max(minBlue, Integer.parseInt(splitToNumberAndColour[0]));
                     }
                 }
             }
         }
         System.out.println(gameInfo);
-        return gameId;
+        return minRed * minGreen * minBlue;
     }
 }
