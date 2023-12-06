@@ -3,6 +3,8 @@ package adventOfCode2023;
 import java.util.Arrays;
 
 public class Trebuchet {
+    private static String[] keySet = {"oneight", "twone", "eightwo", "eighthree", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    private static Integer[] values = {18, 21, 82, 83, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     //https://adventofcode.com/2023/day/1
     public static void main(String[] args) {
@@ -1018,6 +1020,10 @@ public class Trebuchet {
 
     private static int findNumber(String singleLineString) {
         String number = "";
+        String newString = "";
+        for (int i = 0; i < keySet.length; i++) {
+            singleLineString = singleLineString.replaceAll(keySet[i], values[i].toString());
+        }
 
         for (int i = 0; i < singleLineString.length(); i++) {
             if (!Character.isDigit(singleLineString.charAt(i))) {
